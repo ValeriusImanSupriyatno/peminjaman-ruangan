@@ -49,6 +49,16 @@
                 rules: {
                     kode: {
                         required: true,
+                        remote: {
+                            url: "{{url('hak-milik/validasi')}}",
+                            type: "POST",
+                            data: {
+                                _token: "{{csrf_token()}}",
+                                kode: function () {
+                                    return $('#kode').val();
+                                },
+                            }
+                        }
                     },
                     nama: {
                         required: true,
@@ -57,6 +67,7 @@
                 messages: {
                     kode: {
                         required: "Silahkan masukkan kode",
+                        remote: "Kode sudah digunakan."
                     },
                     nama: {
                         required: "Silahkan masukkan nama",

@@ -98,4 +98,21 @@ class FasilitasController extends Controller
         $fasilitas->delete();
         return redirect(url('/fasilitas'));
     }
+
+    public function validasi(Request $request)
+    {
+        $id = $request->id;
+        $data = Fasilitas::where('kode_fasilitas', '=', $request->kode)
+            ->whereNull('deleted_at')->get()->toArray();
+        if (empty($data)) {
+            $valid = response()->json(true);
+        } else {
+            $valid = response()->json(false);
+            if ($data[0]['fasilitas_id'] === $id) {
+                $valid = response()->json(true);
+            }
+        }
+
+        return $valid;
+    }
 }

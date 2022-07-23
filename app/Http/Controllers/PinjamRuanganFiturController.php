@@ -62,7 +62,7 @@ class PinjamRuanganFiturController extends Controller
 
     private function loadData($id): array
     {
-        $query = "SELECT r.ruangan_id, r.kode_ruangan, r.nama_ruangan, hk.nama_hak, kt.nama_kategori,
+        $query = "SELECT r.ruangan_id, r.kode_ruangan, r.kapasitas, r.nama_ruangan, hk.nama_hak, kt.nama_kategori,
                         (SELECT COUNT(dtr.detru_ruangan_id) AS total
                         FROM detail_ruangan as dtr
                         WHERE dtr.deleted_at IS NULL
@@ -73,8 +73,9 @@ class PinjamRuanganFiturController extends Controller
                     INNER JOIN hak_milik as hk on r.ruangan_hak_id = hk.hak_id
                     INNER JOIN kategori_ruangan as kt on r.ruangan_kategori_id = kt.kategori_id
                     WHERE dr.deleted_at IS NULL
+                    AND r.deleted_at IS NULL
                     AND dr.detru_fasilitas_id IN (" . $id . ")
-                    GROUP BY r.ruangan_id, hk.nama_hak, kt.nama_kategori
+                    GROUP BY r.ruangan_id, hk.nama_hak, kt.nama_kategori,r.kapasitas
                     ORDER BY total DESC";
         return DB::select($query);
     }

@@ -99,4 +99,21 @@ class KategoriRuanganController extends Controller
         $kategori->delete();
         return redirect(url('/kategori-ruangan'));
     }
+
+    public function validasi(Request $request)
+    {
+        $id = $request->id;
+        $data = KategoriRuangan::where('kode_kategori', '=', $request->kode)
+            ->whereNull('deleted_at')->get()->toArray();
+        if (empty($data)) {
+            $valid = response()->json(true);
+        } else {
+            $valid = response()->json(false);
+            if ($data[0]['kategori_id'] === $id) {
+                $valid = response()->json(true);
+            }
+        }
+
+        return $valid;
+    }
 }

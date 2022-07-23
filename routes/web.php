@@ -35,6 +35,7 @@ Route::group(['middleware' => ['app_auth']], static function () {
     Route::get('kategori-ruangan', 'KategoriRuanganController@index');
     Route::get('kategori-ruangan/create', 'KategoriRuanganController@create');
     Route::post('kategori-ruangan', 'KategoriRuanganController@store');
+    Route::post('kategori-ruangan/validasi', 'KategoriRuanganController@validasi');
     Route::get('kategori-ruangan/{id}', 'KategoriRuanganController@update');
     Route::get('kategori-ruangan/{id}/edit', 'KategoriRuanganController@edit');
     Route::get('kategori-ruangan/{id}/delete', 'KategoriRuanganController@destroy');
@@ -43,6 +44,7 @@ Route::group(['middleware' => ['app_auth']], static function () {
     Route::get('hak-milik', 'HakMilikController@index');
     Route::get('hak-milik/create', 'HakMilikController@create');
     Route::post('hak-milik', 'HakMilikController@store');
+    Route::post('hak-milik/validasi', 'HakMilikController@validasi');
     Route::get('hak-milik/{id}', 'HakMilikController@update');
     Route::get('hak-milik/{id}/edit', 'HakMilikController@edit');
     Route::get('hak-milik/{id}/delete', 'HakMilikController@destroy');
@@ -51,6 +53,7 @@ Route::group(['middleware' => ['app_auth']], static function () {
     Route::get('fasilitas', 'FasilitasController@index');
     Route::get('fasilitas/create', 'FasilitasController@create');
     Route::post('fasilitas', 'FasilitasController@store');
+    Route::post('fasilitas/validasi', 'FasilitasController@validasi');
     Route::get('fasilitas/{id}', 'FasilitasController@update');
     Route::get('fasilitas/{id}/edit', 'FasilitasController@edit');
     Route::get('fasilitas/{id}/delete', 'FasilitasController@destroy');
@@ -59,6 +62,7 @@ Route::group(['middleware' => ['app_auth']], static function () {
     Route::get('ruangan', 'RuanganController@index');
     Route::get('ruangan/create', 'RuanganController@create');
     Route::post('ruangan', 'RuanganController@store');
+    Route::post('ruangan/validasi', 'RuanganController@validasi');
     Route::get('ruangan/{id}', 'RuanganController@update');
     Route::get('ruangan/{id}/edit', 'RuanganController@edit');
     Route::get('ruangan/{id}/delete', 'RuanganController@destroy');

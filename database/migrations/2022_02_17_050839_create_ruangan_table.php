@@ -21,6 +21,7 @@ class CreateRuanganTable extends Migration
             $table->foreign('ruangan_kategori_id', 'tbl_ruangan_kategori_id_foreign')->references('kategori_id')->on('kategori_ruangan');
             $table->string('kode_ruangan', 255);
             $table->string('nama_ruangan', 255);
+            $table->integer('kapasitas')->nullable();
             $table->string('deskripsi_ruangan', 255)->nullable();
             $table->char('is_active')->default('Y');
             $table->timestamps();

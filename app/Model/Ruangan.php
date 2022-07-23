@@ -36,7 +36,8 @@ class Ruangan extends Model
             ->join('hak_milik as hm', 'rm.ruangan_hak_id', '=', 'hm.hak_id')
             ->join('kategori_ruangan as kr', 'rm.ruangan_kategori_id', '=', 'kr.kategori_id')
             ->select(['rm.ruangan_id', 'rm.ruangan_hak_id', 'rm.ruangan_kategori_id', 'rm.kode_ruangan', 'rm.nama_ruangan',
-                'rm.deskripsi_ruangan', 'rm.is_active', 'hm.kode_hak', 'hm.nama_hak', 'kr.kode_kategori', 'kr.nama_kategori']);
+                'rm.deskripsi_ruangan', 'rm.is_active', 'hm.kode_hak', 'hm.nama_hak', 'kr.kode_kategori', 'kr.nama_kategori',
+                'rm.kapasitas']);
 
         $list->whereNull('rm.deleted_at');
 
@@ -50,7 +51,8 @@ class Ruangan extends Model
             ->join('hak_milik as hm', 'rm.ruangan_hak_id', '=', 'hm.hak_id')
             ->join('kategori_ruangan as kr', 'rm.ruangan_kategori_id', '=', 'kr.kategori_id')
             ->select(['rm.ruangan_id', 'rm.ruangan_hak_id', 'rm.ruangan_kategori_id', 'rm.kode_ruangan', 'rm.nama_ruangan',
-                'rm.deskripsi_ruangan', 'rm.is_active', 'hm.kode_hak', 'hm.nama_hak', 'kr.kode_kategori', 'kr.nama_kategori'])
+                'rm.deskripsi_ruangan', 'rm.is_active', 'hm.kode_hak', 'hm.nama_hak', 'kr.kode_kategori', 'kr.nama_kategori',
+                'rm.kapasitas'])
             ->where('rm.ruangan_id', '=', $id)
             ->get()->toArray();
         return $query[0];

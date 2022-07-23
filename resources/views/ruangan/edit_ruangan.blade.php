@@ -36,10 +36,9 @@
                                        value="{{$data['nama_ruangan']}}">
                             </div>
                             <div class="form-group">
-                                <label for="deskripsi">Deskripsi</label>
-                                <textarea name="deskripsi" id="deskripsi" class="form-control">
-                                    {{$data['deskripsi_ruangan']}}
-                                </textarea>
+                                <label for="nama">Kapasitas</label>
+                                <input type="text" name="kapasitas" class="form-control" id="kapasitas"
+                                       value="{{$data['kapasitas']}}">
                             </div>
                         </div>
                         <div class="col-6">
@@ -66,6 +65,12 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="deskripsi">Deskripsi</label>
+                                <textarea name="deskripsi" id="deskripsi" class="form-control">
+                                    {{$data['deskripsi_ruangan']}}
+                                </textarea>
+                            </div>
                         </div>
                     </div>
 
@@ -91,14 +96,29 @@
                 rules: {
                     kode: {
                         required: true,
+                        remote: {
+                            url: "{{url('ruangan/validasi')}}",
+                            type: "POST",
+                            data: {
+                                _token: "{{csrf_token()}}",
+                                id: {{$data['ruangan_id']}},
+                                kode: function () {
+                                    return $('#kode').val();
+                                },
+                            }
+                        }
                     },
                     nama: {
                         required: true,
+                    },
+                    kapasitas: {
+                        number: true,
                     },
                 },
                 messages: {
                     kode: {
                         required: "Silahkan masukkan kode",
+                        remote: "Kode sudah digunakan."
                     },
                     nama: {
                         required: "Silahkan masukkan nama",

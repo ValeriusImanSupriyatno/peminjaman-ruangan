@@ -34,6 +34,7 @@
                                     <th>Nama</th>
                                     <th>Hak Milik</th>
                                     <th>Kategori</th>
+                                    <th>Kapasitas</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
@@ -46,6 +47,7 @@
                                         <td>{{$rm->nama_ruangan}}</td>
                                         <td>{{$rm->kode_hak}} - {{$rm->nama_hak}}</td>
                                         <td>{{$rm->kode_kategori}} - {{$rm->nama_kategori}}</td>
+                                        <td>{{$rm->kapasitas}}</td>
                                         <td>
                                             <a href="{{url('ruangan/'.$rm->ruangan_id.'/detail')}}"
                                                class="btn btn-sm btn-info"><i

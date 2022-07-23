@@ -99,4 +99,22 @@ class HakMilikController extends Controller
         $hakMilik->delete();
         return redirect(url('/hak-milik'));
     }
+
+
+    public function validasi(Request $request)
+    {
+        $id = $request->id;
+        $data = HakMilik::where('kode_hak', '=', $request->kode)
+            ->whereNull('deleted_at')->get()->toArray();
+        if (empty($data)) {
+            $valid = response()->json(true);
+        } else {
+            $valid = response()->json(false);
+            if ($data[0]['hak_id'] === $id) {
+                $valid = response()->json(true);
+            }
+        }
+
+        return $valid;
+    }
 }

@@ -22,11 +22,11 @@
                                 <table class="table">
                                     <tr>
                                         <th style="width:50%">Ruangan</th>
-                                        <td>{{$data['peminjaman_ruangan_id']}}</td>
+                                        <td>{{$data['nama_ruangan'] .' - '.$data['kode_ruangan']}}</td>
                                     </tr>
                                     <tr>
                                         <th style="width:50%">Peminjam</th>
-                                        <td>{{$data['peminjaman_user_peminjam']}}</td>
+                                        <td>{{$data['name']}}</td>
                                     </tr>
                                     <tr>
                                         <th style="width:50%">Kode</th>
@@ -39,8 +39,8 @@
                                     </tr>
                                     <tr>
                                         <th style="width:50%">Jam</th>
-                                        <td>{{$data['peminjaman_jam_awal']}}
-                                            - {{$data['peminjaman_jam_akhir']}}</td>
+                                        <td>{{date('H:i',strtotime($data['peminjaman_jam_awal']))}}
+                                            - {{date('H:i',strtotime($data['peminjaman_jam_akhir']))}}</td>
                                     </tr>
                                     <tr>
                                         <th style="width:50%">Telp</th>
@@ -59,7 +59,7 @@
                                             <input type="hidden" name="user" value="{{$session['user_id']}}" id="user">
                                             <button class="btn btn-sm btn-primary" type="submit" id="btn-acc" name="acc"
                                                     value="Y">
-                                                ACC
+                                                Ijinkan
                                             </button>
                                         @endif
                                         @if($data['is_active'] === 'Y')

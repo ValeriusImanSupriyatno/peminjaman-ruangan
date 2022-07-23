@@ -39,10 +39,10 @@
                                     <tr>
                                         <td>{{$no++}}</td>
                                         <td>{{$pm->peminjaman_kode}}</td>
-                                        <td>{{$pm->peminjaman_ruangan_id}}</td>
+                                        <td>{{$pm->nama_ruangan .' - '. $pm->kode_ruangan}}</td>
                                         <td>{{$pm->peminjaman_tgl_awal}}</td>
                                         <td>{{$pm->peminjaman_tgl_akhir}}</td>
-                                        <td>{{empty($pm->is_active) ? '-' : ($pm->is_active == 'Y' ? 'ACC' : 'Selesai')}}</td>
+                                        <td>{{empty($pm->is_active) ? '-' : ($pm->is_active == 'Y' ? 'Ijinkan' : 'Selesai')}}</td>
                                         <td>
                                             <a href="{{url('peminjaman/'.$pm->peminjaman_id.'/detail')}}"
                                                class="btn btn-sm btn-info"><i

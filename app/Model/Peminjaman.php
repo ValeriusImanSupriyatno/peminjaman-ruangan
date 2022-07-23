@@ -50,6 +50,7 @@ class Peminjaman extends Model
                 'pm.peminjaman_deskripsi',
                 'pm.is_active',
                 'r.nama_ruangan',
+                'r.kode_ruangan',
             ]);
         return $query->get();
     }
@@ -58,6 +59,7 @@ class Peminjaman extends Model
     {
         $query = DB::table('peminjaman', 'pm')
             ->join('ruangan as r', 'pm.peminjaman_ruangan_id', '=', 'r.ruangan_id')
+            ->join('users as u', 'pm.peminjaman_user_peminjam', '=', 'u.user_id')
             ->select(['pm.peminjaman_id',
                 'pm.peminjaman_ruangan_id',
                 'pm.peminjaman_user_peminjam',
@@ -72,6 +74,8 @@ class Peminjaman extends Model
                 'pm.peminjaman_deskripsi',
                 'pm.is_active',
                 'r.nama_ruangan',
+                'r.kode_ruangan',
+                'u.name'
             ])
             ->where('peminjaman_id', '=', $id)
             ->get()->toArray();

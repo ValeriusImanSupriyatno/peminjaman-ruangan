@@ -37,6 +37,10 @@
                                         <td>{{$data['nama_kategori']}}</td>
                                     </tr>
                                     <tr>
+                                        <th style="width:50%">Kapasitas</th>
+                                        <td>{{$data['kapasitas']}}</td>
+                                    </tr>
+                                    <tr>
                                         <th style="width:50%">Deskripsi</th>
                                         <td>{{$data['deskripsi_ruangan']}}</td>
                                     </tr>

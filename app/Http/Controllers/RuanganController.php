@@ -68,6 +68,7 @@ class RuanganController extends Controller
         $ruangan->kode_ruangan = $request->get('kode');
         $ruangan->nama_ruangan = $request->get('nama');
         $ruangan->deskripsi_ruangan = $request->get('deskripsi');
+        $ruangan->kapasitas = $request->get('kapasitas');
         $ruangan->is_active = 'Y';
         $ruangan->save();
 
@@ -108,6 +109,7 @@ class RuanganController extends Controller
         $ruangan->kode_ruangan = $request->get('kode');
         $ruangan->nama_ruangan = $request->get('nama');
         $ruangan->deskripsi_ruangan = $request->get('deskripsi');
+        $ruangan->kapasitas = $request->get('kapasitas');
         $ruangan->update();
 
         return redirect(url('/ruangan'));
@@ -144,5 +146,23 @@ class RuanganController extends Controller
             'listFasilitas' => $detailRu,
         ];
         return view('ruangan.view_ruangan', $data);
+    }
+
+    public function validasi(Request $request)
+    {
+        $id = $request->id;
+        $data = Ruangan::where('kode_ruangan', '=', $request->kode)
+            ->whereNull('deleted_at')->get()->toArray();
+
+        if (empty($data)) {
+            $valid = response()->json(true);
+        } else {
+            $valid = response()->json(false);
+            if ($data[0]['ruangan_id'] === $id) {
+                $valid = response()->json(true);
+            }
+        }
+
+        return $valid;
     }
 }

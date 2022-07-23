@@ -71,6 +71,7 @@
                             <th>Nama Ruangan</th>
                             <th>Hak Milik</th>
                             <th>Kategori</th>
+                            <th>Kapasitas</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
@@ -181,6 +182,7 @@
                                     "<td>" + data[i].nama_ruangan + "</td>" +
                                     "<td>" + data[i].nama_hak + "</td>" +
                                     "<td>" + data[i].nama_kategori + "</td>" +
+                                    "<td>" + data[i].kapasitas + "</td>" +
                                     "<td>" +
                                     "<a href='" + url + "/" + data[i].ruangan_id + "' class='btn btn-sm btn-info'>" +
                                     "<i class='nav-icon fas fa-eye'></i>" +
